@@ -15,6 +15,52 @@ license: mit
 This project predicts the probability that a customer will make a specific transaction in the future.
 It is based on the Kaggle competition **Santander Customer Transaction Prediction**.
 
+## 🔗 Live Demo & Code
+
+💻 GitHub Repository: [https://github.com/EnYa32/SantanderTransactionClassifcation]
+
+🏁 Kaggle Competition: [https://www.kaggle.com/code/enesyama/santandertransactionclassifcation]
+
+
+## 📊 Visual Evaluation
+
+**Target Distribution** — strong class imbalance → ROC-AUC used as main metric  
+![Target Distribution](./santander_class_balance.png)
+
+**ROC Curve — LightGBM (AUC ≈ 0.8888)**  
+![ROC Curve](./santander_roc_curve.png)
+
+**Confusion Matrix (fixed threshold view)**  
+![Confusion Matrix](./santander_confusion_matrix.png)
+
+**Top Feature Importances — LightGBM**  
+![Feature Importance](./santander_feature_importance.png)
+
+
+🔍 Evaluation Notes
+
+- Metric: ROC-AUC (competition metric)
+- Strong class imbalance handled via probability modeling
+- Threshold used only for interpretability
+- Final model selected via cross-model comparison
+
+
+
+
+## Problem Statement
+
+Given 200 anonymized numeric features (var_0 … var_199),
+predict the probability that a customer will perform a target transaction.
+
+Challenges:
+
+strong class imbalance
+
+anonymized features (no domain meaning)
+
+probability ranking more important than hard labels
+
+
 ## ✅ Model
 We trained and compared multiple models using ROC-AUC (main metric due to class imbalance):
 
@@ -25,9 +71,9 @@ We trained and compared multiple models using ROC-AUC (main metric due to class 
 LightGBM achieved the best ROC-AUC and was selected as the final model.
 
 ## 📁 Project Files
-- `app.py` : Streamlit application
-- `lightgbm_santander_model.pkl` : saved LightGBM model (joblib)
-- `requirements.txt` : dependencies
+- app.py : Streamlit application
+- lightgbm_santander_model.pkl : saved LightGBM model (joblib)
+- requirements.txt : dependencies
 
 > Important: Put `lightgbm_santander_model.pkl` in the same folder as `app.py`.
 
